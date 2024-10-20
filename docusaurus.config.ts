@@ -4,7 +4,7 @@ import type * as Preset from "@docusaurus/preset-classic";
 
 const config: Config = {
   title: "Undici",
-  tagline: "An HTTP/1.1 client, written from scratch for Node.js.",
+  tagline: "A HTTP/1.1 client, written from scratch for Node.js.",
 
   // Set the production url of your site here
   url: "https://undici-docs.vramana.dev",
