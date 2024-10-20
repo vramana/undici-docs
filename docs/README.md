@@ -11,7 +11,6 @@ It is also a Stranger Things reference.
 
 Have a question about using Undici? Open a [Q&A Discussion](https://github.com/nodejs/undici/discussions/new) or join our official OpenJS [Slack](https://openjs-foundation.slack.com/archives/C01QF9Q31QD) channel.
 
-Looking to contribute? Start by reading the [contributing guide](./CONTRIBUTING.md)
 
 ## Install
 
@@ -117,14 +116,14 @@ For more information about their behavior, please reference the body mixin from 
 
 ## Common API Methods
 
-This section documents our most commonly used API methods. Additional APIs are documented in their own files within the [docs](./docs/) folder and are accessible via the navigation list on the left side of the docs site.
+This section documents our most commonly used API methods. Additional APIs are documented in their own files within the docs folder and are accessible via the navigation list on the left side of the docs site.
 
 ### `undici.request([url, options]): Promise`
 
 Arguments:
 
 * **url** `string | URL | UrlObject`
-* **options** [`RequestOptions`](./docs/docs/api/Dispatcher.md#parameter-requestoptions)
+* **options** [`RequestOptions`](./api/Dispatcher.md#parameter-requestoptions)
   * **dispatcher** `Dispatcher` - Default: [getGlobalDispatcher](#undicigetglobaldispatcher)
   * **method** `String` - Default: `PUT` if `options.body`, otherwise `GET`
 
@@ -132,14 +131,13 @@ Returns a promise with the result of the `Dispatcher.request` method.
 
 Calls `options.dispatcher.request(options)`.
 
-See [Dispatcher.request](./docs/docs/api/Dispatcher.md#dispatcherrequestoptions-callback) for more details, and [request examples](./docs/examples/README.md) for examples.
 
 ### `undici.stream([url, options, ]factory): Promise`
 
 Arguments:
 
 * **url** `string | URL | UrlObject`
-* **options** [`StreamOptions`](./docs/docs/api/Dispatcher.md#parameter-streamoptions)
+* **options** [`StreamOptions`](./api/Dispatcher.md#parameter-streamoptions)
   * **dispatcher** `Dispatcher` - Default: [getGlobalDispatcher](#undicigetglobaldispatcher)
   * **method** `String` - Default: `PUT` if `options.body`, otherwise `GET`
 * **factory** `Dispatcher.stream.factory`
@@ -148,14 +146,14 @@ Returns a promise with the result of the `Dispatcher.stream` method.
 
 Calls `options.dispatcher.stream(options, factory)`.
 
-See [Dispatcher.stream](./docs/docs/api/Dispatcher.md#dispatcherstreamoptions-factory-callback) for more details.
+See [Dispatcher.stream](./api/Dispatcher.md#dispatcherstreamoptions-factory-callback) for more details.
 
 ### `undici.pipeline([url, options, ]handler): Duplex`
 
 Arguments:
 
 * **url** `string | URL | UrlObject`
-* **options** [`PipelineOptions`](./docs/docs/api/Dispatcher.md#parameter-pipelineoptions)
+* **options** [`PipelineOptions`](./api/Dispatcher.md#parameter-pipelineoptions)
   * **dispatcher** `Dispatcher` - Default: [getGlobalDispatcher](#undicigetglobaldispatcher)
   * **method** `String` - Default: `PUT` if `options.body`, otherwise `GET`
 * **handler** `Dispatcher.pipeline.handler`
@@ -164,7 +162,7 @@ Returns: `stream.Duplex`
 
 Calls `options.dispatch.pipeline(options, handler)`.
 
-See [Dispatcher.pipeline](./docs/docs/api/Dispatcher.md#dispatcherpipelineoptions-handler) for more details.
+See [Dispatcher.pipeline](./api/Dispatcher.md#dispatcherpipelineoptions-handler) for more details.
 
 ### `undici.connect([url, options]): Promise`
 
@@ -173,7 +171,7 @@ Starts two-way communications with the requested resource using [HTTP CONNECT](h
 Arguments:
 
 * **url** `string | URL | UrlObject`
-* **options** [`ConnectOptions`](./docs/docs/api/Dispatcher.md#parameter-connectoptions)
+* **options** [`ConnectOptions`](./api/Dispatcher.md#parameter-connectoptions)
   * **dispatcher** `Dispatcher` - Default: [getGlobalDispatcher](#undicigetglobaldispatcher)
 * **callback** `(err: Error | null, data: ConnectData | null) => void` (optional)
 
@@ -181,7 +179,7 @@ Returns a promise with the result of the `Dispatcher.connect` method.
 
 Calls `options.dispatch.connect(options)`.
 
-See [Dispatcher.connect](./docs/docs/api/Dispatcher.md#dispatcherconnectoptions-callback) for more details.
+See [Dispatcher.connect](./api/Dispatcher.md#dispatcherconnectoptions-callback) for more details.
 
 ### `undici.fetch(input[, init]): Promise`
 
@@ -332,7 +330,7 @@ Upgrade to a different protocol. See [MDN - HTTP - Protocol upgrade mechanism](h
 Arguments:
 
 * **url** `string | URL | UrlObject`
-* **options** [`UpgradeOptions`](./docs/docs/api/Dispatcher.md#parameter-upgradeoptions)
+* **options** [`UpgradeOptions`](./api/Dispatcher.md#parameter-upgradeoptions)
   * **dispatcher** `Dispatcher` - Default: [getGlobalDispatcher](#undicigetglobaldispatcher)
 * **callback** `(error: Error | null, data: UpgradeData) => void` (optional)
 
@@ -340,7 +338,7 @@ Returns a promise with the result of the `Dispatcher.upgrade` method.
 
 Calls `options.dispatcher.upgrade(options)`.
 
-See [Dispatcher.upgrade](./docs/docs/api/Dispatcher.md#dispatcherupgradeoptions-callback) for more details.
+See [Dispatcher.upgrade](./api/Dispatcher.md#dispatcherupgradeoptions-callback) for more details.
 
 ### `undici.setGlobalDispatcher(dispatcher)`
 
@@ -440,22 +438,6 @@ If the target server resolves to both a IPv6 and IPv4 (A records) address and yo
 (18.3.0 and above), you can fix the problem by providing the `autoSelectFamily` option (support by both `undici.request`
 and `undici.Agent`) which will enable the family autoselection algorithm when establishing the connection.
 
-## Collaborators
-
-* [__Daniele Belardi__](https://github.com/dnlup), <https://www.npmjs.com/~dnlup>
-* [__Ethan Arrowood__](https://github.com/ethan-arrowood), <https://www.npmjs.com/~ethan_arrowood>
-* [__Matteo Collina__](https://github.com/mcollina), <https://www.npmjs.com/~matteo.collina>
-* [__Matthew Aitken__](https://github.com/KhafraDev), <https://www.npmjs.com/~khaf>
-* [__Robert Nagy__](https://github.com/ronag), <https://www.npmjs.com/~ronag>
-* [__Szymon Marczak__](https://github.com/szmarczak), <https://www.npmjs.com/~szmarczak>
-* [__Tomas Della Vedova__](https://github.com/delvedor), <https://www.npmjs.com/~delvedor>
-
-### Releasers
-
-* [__Ethan Arrowood__](https://github.com/ethan-arrowood), <https://www.npmjs.com/~ethan_arrowood>
-* [__Matteo Collina__](https://github.com/mcollina), <https://www.npmjs.com/~matteo.collina>
-* [__Robert Nagy__](https://github.com/ronag), <https://www.npmjs.com/~ronag>
-* [__Matthew Aitken__](https://github.com/KhafraDev), <https://www.npmjs.com/~khaf>
 
 ## License
 
